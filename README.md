@@ -1,50 +1,15 @@
-# Add a relation between a User node and an other User node, property field named `followers`
+# Add a Comment Node to the schema that have properties `id`, `text`
+# Add a relation between a User node and a Comment node, property field named `comments`
+# Add a relation between a Comment node and an User node, property field named `author`
+
+--- Graph of schema here
 
 ## Query example
 ```js
-query {
-  me {
-    id
-    name
-    email
-    followers {
-      id
-      name
-      tweets {
-        id
-        text
-      }
-    }
-  }
-}
+
 ```
 
 ## Response
 ```js
-{
-  "data": {
-    "me": {
-      "id": "u1",
-      "name": "moncef",
-      "email": "moncef@example.com",
-      "followers": [
-        {
-          "id": "u2",
-          "name": "lee",
-          "tweets": [
-            {
-              "id": "t3",
-              "text": "REST in peace, welcome GraphQL #graphql"
-            }
-          ]
-        },
-        {
-          "id": "u3",
-          "name": "seth",
-          "tweets": []
-        }
-      ]
-    }
-  }
-}
+
 ```
