@@ -1,4 +1,4 @@
-# Write a query and a resolver to filter tweets by user id
+# Write a query and a resolver to filter `tweets` by user id
 
 ## Query example
 ```js
