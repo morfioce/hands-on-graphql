@@ -12,5 +12,6 @@ type User {
 
 type Tweet {
   id: ID!
-  text: String
+  text: String!
+  author: User!
 }

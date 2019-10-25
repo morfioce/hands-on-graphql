@@ -1,11 +1,16 @@
-# Write a query and a resolver to filter tweets by user id
+# Add a relation between a User node and a Tweet node, property field named `tweets`
 
 ## Query example
 ```js
 query {
-  tweets(id: "u1") {
+  me {
     id
-    text
+    name
+    email
+    tweets {
+      id
+      text
+    }
   }
 }
 ```
@@ -14,16 +19,21 @@ query {
 ```js
 {
   "data": {
-    "tweets": [
-      {
-        "id": "t1",
-        "text": "GraphQL is cool #graphql"
-      },
-      {
-        "id": "t2",
-        "text": "Apollo graphql server is awesome #apollo"
-      }
-    ]
+    "me": {
+      "id": "u1",
+      "name": "moncef",
+      "email": "moncef@example.com",
+      "tweets": [
+        {
+          "id": "t1",
+          "text": "GraphQL is cool #graphql"
+        },
+        {
+          "id": "t2",
+          "text": "Apollo graphql server is awesome #apollo"
+        }
+      ]
+    }
   }
 }
 ```
