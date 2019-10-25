@@ -1,4 +1,4 @@
-# Add a relation between a User node and a Tweet node, property field named `tweets`
+# Add a relation between a User node and an other User node, property field named `followers`
 
 ## Query example
 ```js
@@ -7,9 +7,13 @@ query {
     id
     name
     email
-    tweets {
+    followers {
       id
-      text
+      name
+      tweets {
+        id
+        text
+      }
     }
   }
 }
@@ -23,14 +27,21 @@ query {
       "id": "u1",
       "name": "moncef",
       "email": "moncef@example.com",
-      "tweets": [
+      "followers": [
         {
-          "id": "t1",
-          "text": "GraphQL is cool #graphql"
+          "id": "u2",
+          "name": "lee",
+          "tweets": [
+            {
+              "id": "t3",
+              "text": "REST in peace, welcome GraphQL #graphql"
+            }
+          ]
         },
         {
-          "id": "t2",
-          "text": "Apollo graphql server is awesome #apollo"
+          "id": "u3",
+          "name": "seth",
+          "tweets": []
         }
       ]
     }

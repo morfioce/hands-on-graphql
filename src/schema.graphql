@@ -8,6 +8,8 @@ type User {
   id: ID!
   name: String!
   email: String!
+  tweets: [Tweet!]!
+  followers: [User!]!
 }
 
 type Tweet {

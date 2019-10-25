@@ -1,10 +1,13 @@
-import db from '../db';
-
 const Query = {
-  ping: () => 'GraphQL server is alive',
-  me: () => db.users[0],
+  ping() {
+    return 'GraphQL server is alive';
+  },
 
-  user: (_, args) => {
+  me(_, __, { db }) {
+    return db.users[0];
+  },
+
+  user: (_, args, { db }) => {
     if (args.id === '') {
       throw new Error('"id" is not valid');
     }
