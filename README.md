@@ -11,4 +11,4 @@ Build using:
 - Apollo server
 
 Exercise list
-* [Exercise 1](https://github.com/morfioce/hands-on-graphql/ex1)
+* [Exercise 1](https://github.com/morfioce/hands-on-graphql/tree/ex1)
