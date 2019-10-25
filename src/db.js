@@ -22,7 +22,7 @@ const users = [
 const tweets = [
   {
     id: "t1",
-    text: "GraphQL is cool",
+    text: "GraphQL is cool #graphql",
     author: "u1"
   },
   {
