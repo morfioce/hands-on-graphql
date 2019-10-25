@@ -3,12 +3,14 @@ import { importSchema } from 'graphql-import';
 import db from './db';
 import Query from './resolvers/Query';
 import User from './resolvers/User';
+import Comment from './resolvers/Comment';
 
 const server = new ApolloServer({
   typeDefs: importSchema('src/schema.graphql'),
   resolvers: {
     Query,
-    User
+    User,
+    Comment
   },
   context: {
     db

@@ -10,9 +10,16 @@ type User {
   email: String!
   tweets: [Tweet!]!
   followers: [User!]!
+  comments: [Comment!]!
 }
 
 type Tweet {
   id: ID!
   text: String!
+}
+
+type Comment {
+  id: ID!
+  text: String!
+  author: User!
 }

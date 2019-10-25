@@ -5,6 +5,10 @@ const User = {
 
   followers(parent, _, { db }) {
     return db.users.filter((u) => u.follow.includes(parent.id));
+  },
+
+  comments(parent, _, { db }) {
+    return db.comments.filter((c) => c.author == parent.id);
   }
 };
 
