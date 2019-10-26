@@ -1,22 +1,24 @@
-# Exericse 4
-- ## Add a Comment Node to the schema that have properties `id`, `text` 
-- ## Add a relation between a User node and a Comment node, property field name `comments`
-- ## Add a relation between a Comment node and a User node, property field named `author`
+# Exericse 5
+- ## Add a relation between a Tweet node and a Comment node, property field name `comments`
+- ## Add a relation between a Comment node and a Tweet node, property field named `tweet`
 
 --- Graph of schema here
 
 ## Query example
 ```js
 query {
- me {
+ user(id: "u2") {
     id
     name
-    comments {
-      id,
+    tweets {
+      id
       text
-      author {
+      comments {
         id
-        name
+        text
+        author {
+          id
+        }
       }
     }
   }
@@ -27,25 +29,36 @@ query {
 ```js
 {
   "data": {
-    "me": {
-      "id": "u1",
-      "name": "moncef",
-      "comments": [
+    "user": {
+      "id": "u2",
+      "name": "lee",
+      "tweets": [
         {
-          "id": "c1",
-          "text": "Where to start learning GraphQL",
-          "author": {
-            "id": "u1",
-            "name": "moncef"
-          }
-        },
-        {
-          "id": "c3",
-          "text": "Thank you",
-          "author": {
-            "id": "u1",
-            "name": "moncef"
-          }
+          "id": "t3",
+          "text": "REST in peace, welcome GraphQL #graphql",
+          "comments": [
+            {
+              "id": "c1",
+              "text": "Where to start learning GraphQL",
+              "author": {
+                "id": "u1"
+              }
+            },
+            {
+              "id": "c2",
+              "text": "Go to howtographql.com",
+              "author": {
+                "id": "u2"
+              }
+            },
+            {
+              "id": "c3",
+              "text": "Thank you",
+              "author": {
+                "id": "u1"
+              }
+            }
+          ]
         }
       ]
     }
