@@ -16,6 +16,7 @@ type User {
 type Tweet {
   id: ID!
   text: String!
+  comments: [Comment!]!
 }
 
 type Comment {
