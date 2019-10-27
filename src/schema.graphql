@@ -4,6 +4,12 @@ type Query {
   user(id: ID!): User
 }
 
+type Mutation {
+  createUser(name: String!, email: String!): User!
+  updateUser(id: ID!, name: String, email: String): User!
+  createComment(input: CreateCommentInput): Comment!
+}
+
 type User {
   id: ID!
   name: String!
@@ -22,4 +28,10 @@ type Comment {
   id: ID!
   text: String!
   author: User!
+}
+
+input CreateCommentInput {
+  userId: ID!
+  tweetId: ID!
+  text: String!
 }
