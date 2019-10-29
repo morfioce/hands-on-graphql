@@ -9,6 +9,14 @@ const User = {
 
   comments(parent, _, { db }) {
     return db.comments.filter((c) => c.author == parent.id);
+  },
+
+  likes(parent, _, { db }) {
+    return db.tweets.filter((t) => parent.likes.includes(t.id));
+  },
+
+  retweets(parent, _, { db }) {
+    return db.tweets.filter((t) => parent.retweets.includes(t.id));
   }
 };
 

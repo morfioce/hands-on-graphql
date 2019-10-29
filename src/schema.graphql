@@ -1,13 +1,35 @@
 type Query {
-  ping: String
-  me: User
-  user(id: ID!): User
+  me: User!
+  user(id: ID!): User!
+  feed(id: ID!): [Tweet!]!
+  search(query: String): [SearchResult!]!
 }
 
 type Mutation {
-  createUser(name: String!, email: String!): User!
-  updateUser(id: ID!, name: String, email: String): User!
+  createUser(input: CreateUserInput): User!
+  updateUser(input: UpdateUserInput): User!
+  deleteUser(id: ID!): User!
+
+  follow(input: FollowInput): User!
+  unfollow(input: FollowInput): User!
+
+  createTweet(input: CreateTweetInput): Tweet!
+  # updateTweet(input: updateTweetInput): Tweet!
+  # deleteTweet(id: ID!): Tweet!
+
+  like(input: LikeInput): User!
+  retweet(input: RetweetInput): User!
+  
   createComment(input: CreateCommentInput): Comment!
+  # updateComment(input: UpdateCommentInput): Comment!
+  # deleteComment(id: ID!): Comment!
+}
+
+type Subscription {
+  like(userId: ID!): Tweet!
+  retweet(userId: ID!): Tweet!
+  mention(userId: ID!): Tweet!
+  # follow(userId: ID!): User!
 }
 
 type User {
@@ -15,19 +37,47 @@ type User {
   name: String!
   email: String!
   tweets: [Tweet!]!
+  retweets: [Tweet!]!
   followers: [User!]!
   comments: [Comment!]!
+  likes: [Tweet!]!
 }
 
 type Tweet {
   id: ID!
   text: String!
+  author: User!
+  likers: [User!]!
+  retweeters: [User!]!
 }
 
 type Comment {
   id: ID!
   text: String!
   author: User!
+  likes: [User!]!
+  retweets: [User!]!
+}
+
+input CreateUserInput {
+  name: String!
+  email: String!
+}
+
+input CreateTweetInput {
+  userId: ID!
+  text: String!
+}
+
+input LikeInput {
+  tweetId: ID!
+  userId: ID!
+}
+
+input UpdateUserInput {
+  id: ID!
+  name: String
+  email: String
 }
 
 input CreateCommentInput {
@@ -35,3 +85,15 @@ input CreateCommentInput {
   tweetId: ID!
   text: String!
 }
+
+input RetweetInput {
+  userId: ID!
+  tweetId: ID!
+}
+
+input FollowInput {
+  followerId: ID!
+  followeeId: ID!
+}
+
+union SearchResult = User | Tweet

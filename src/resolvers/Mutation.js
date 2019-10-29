@@ -1,15 +1,9 @@
 const Mutation = {
-  createUser(_, { name, email }, { db }) {
-    if (email == '') {
-      throw new Error('email is required');
-    }
+  createUser(_, { input }, { db }) {
+    const { name, email } = input;
     const userExists = db.users.find((u) => u.email == email);
     if (userExists) {
       throw new Error('You are already registred');
-    }
-
-    if (name == '') {
-      throw new Error('name is required');
     }
 
     let user = {
@@ -19,10 +13,12 @@ const Mutation = {
     };
 
     db.users.push(user);
+
     return user;
   },
 
-  updateUser(_, { id, name, email }, { db }) {
+  updateUser(_, { input }, { db }) {
+    const { id, name, email } = input;
     const userExists = db.users.find((u) => u.id == id);
 
     if (!userExists) {
@@ -39,6 +35,70 @@ const Mutation = {
       if (u.id == id) return user;
       else return u;
     });
+
+    return user;
+  },
+
+  createTweet(_, { input }, { db, pubsub }) {
+    const { userId, text } = input;
+    const user = db.users.find((u) => u.id == userId);
+    if (!user) {
+      throw new Error('No user with id ' + userId);
+    }
+
+    const tweet = {
+      id: `t${db.tweets.length + 1}`,
+      text,
+      author: userId
+    };
+
+    db.tweets.push(tweet);
+
+    db.users.forEach(({ id, name }) => {
+      if (text.includes(`@${name}`)) {
+        pubsub.publish(`MENTION_${id}`, { mention: tweet });
+      }
+    });
+
+    return tweet;
+  },
+
+  like(_, { input }, { db, pubsub }) {
+    const { tweetId, userId } = input;
+    const user = db.users.find((u) => u.id == userId);
+    if (!user) {
+      throw new Error('No user with id ' + userId);
+    }
+
+    const tweet = db.tweets.find((u) => u.id == tweetId);
+    if (!tweet) {
+      throw new Error('No tweet with id ' + tweetId);
+    }
+
+    if (!user.likes.includes(tweetId)) {
+      user.likes.push(tweetId);
+      pubsub.publish(`LIKE_${tweet.author}`, { like: tweet });
+    }
+
+    return user;
+  },
+
+  retweet(_, { input }, { db, pubsub }) {
+    const { tweetId, userId } = input;
+    const user = db.users.find((u) => u.id == userId);
+    if (!user) {
+      throw new Error('No user with id ' + userId);
+    }
+
+    const tweet = db.tweets.find((u) => u.id == tweetId);
+    if (!tweet) {
+      throw new Error('No tweet with id ' + tweetId);
+    }
+
+    if (!user.retweets.includes(tweetId)) {
+      user.retweets.push(tweetId);
+      pubsub.publish(`RETWEET_${tweet.author}`, { retweet: tweet });
+    }
 
     return user;
   },
@@ -65,6 +125,45 @@ const Mutation = {
     db.comments.push(comment);
 
     return comment;
+  },
+
+  follow(_, { input }, { db }) {
+    const { followerId, followeeId } = input;
+    let follower = db.users.find((u) => u.id == followerId);
+    if (!follower) {
+      throw new Error('No user with id ', followerId);
+    }
+
+    let followee = db.users.find((u) => u.id == followeeId);
+    if (!followee) {
+      throw new Error('No user with id ', followeeId);
+    }
+
+    if (!follower.follow.includes(followeeId)) {
+      follower.follow.push(followeeId);
+    }
+
+    return follower;
+  },
+
+  unfollow(_, { input }, { db }) {
+    const { followerId, followeeId } = input;
+    let follower = db.users.find((u) => u.id == followerId);
+    if (!follower) {
+      throw new Error('No user with id ', followerId);
+    }
+
+    let followee = db.users.find((u) => u.id == followeeId);
+    if (!followee) {
+      throw new Error('No user with id ', followeeId);
+    }
+
+    const i = follower.follow.findIndex(id => id == followeeId);
+    if (i > -1) {
+      follower.follow.splice(i, 1);
+    }
+
+    return follower;
   }
 };
 
