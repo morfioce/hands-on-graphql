@@ -1,20 +1,20 @@
-# Exericse 6
+# Exericse 7
 
-### Create a mutation `follow(followerId: ID!, followeeId: ID!): User!`
-### Create a mutation `unfollow(followerId: ID!, followeeId: ID!): User!`
+### Create a mutation `like(userId: ID!, tweetId: ID!): User!`
+### Create a mutation `retweet(userId: ID!: tweetId: ID!): User!`
 
 ## Query example
 ```js
 mutation {
-	follow(input: {
-    followerId: "u2"
-    followeeId: "u1"
+  like(input: {
+    tweetId: "t1"
+    userId: "u3"
   }) {
     id
     name
-    followers {
-      id,
-      name
+    likes {
+      id
+      text
     }
   }
 }
@@ -24,13 +24,13 @@ mutation {
 ```js
 {
   "data": {
-    "follow": {
-      "id": "u1",
-      "name": "moncef",
-      "followers": [
+    "like": {
+      "id": "u3",
+      "name": "seth",
+      "likes": [
         {
-          "id": "u2",
-          "name": "lee"
+          "id": "t1",
+          "text": "GraphQL is cool #graphql"
         }
       ]
     }
