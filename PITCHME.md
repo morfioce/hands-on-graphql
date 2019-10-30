@@ -81,6 +81,6 @@ Hands on GraphQL
 ![IMAGE](./assets/blog-app-gql-api.jpg)
 @snapend
 
----?image=assets/blog-app-gql.jpg&size=auto 85%
+---?image=assets/blog-app-gql.jpg&size=auto 95%
 ---?image=assets/blog-app-gql-1.jpg&size=auto 95%
----?image=assets/blog-app-gql-2.jpg&size=auto 100%
+---?image=assets/blog-app-gql-2.jpg&size=auto 95%
