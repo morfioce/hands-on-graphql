@@ -1,38 +1,19 @@
-# Exericse 7
+# Exericse 8
 
-### Create a mutation `like(userId: ID!, tweetId: ID!): User!`
-### Create a mutation `retweet(userId: ID!: tweetId: ID!): User!`
+A user should be able to subscribe to `like` events on his own tweets.
+A user send a subscription query with his own `id`.
+
+### Create a subscription `like(userId: ID!): Tweet!`
 
 ## Query example
 ```js
-mutation {
-  like(input: {
-    tweetId: "t1"
-    userId: "u3"
-  }) {
+subscription {
+  like(userId: "u1") {
     id
-    name
-    likes {
+    text
+    likers {
       id
-      text
-    }
-  }
-}
-```
-
-## Response
-```js
-{
-  "data": {
-    "like": {
-      "id": "u3",
-      "name": "seth",
-      "likes": [
-        {
-          "id": "t1",
-          "text": "GraphQL is cool #graphql"
-        }
-      ]
+      name
     }
   }
 }
