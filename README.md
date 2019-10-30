@@ -1,20 +1,16 @@
-# Exericse 8
+# Exericse 10
 
-A user should be able to subscribe to `like` events on his own tweets.
+A user should be able to subscribe to `mention` events.  
 A user send a subscription query with his own `id`.
 
-### Create a subscription `like(userId: ID!): Tweet!`
+### Create a subscription `mention(userId: ID!): Tweet!`
 
 ## Query example
 ```js
 subscription {
-  like(userId: "u1") {
+  mentions: mention(userId: "u2") {
     id
     text
-    likers {
-      id
-      name
-    }
   }
 }
 ```
