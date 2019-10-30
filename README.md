@@ -1,25 +1,20 @@
-# Exericse 5
-- ## Add a relation between a Tweet node and a Comment node, property field name `comments`
-- ## Add a relation between a Comment node and a Tweet node, property field named `tweet`
+# Exericse 6
 
---- Graph of schema here
+### Create a mutation `follow(followerId: ID!, followeeId: ID!): User!`
+### Create a mutation `unfollow(followerId: ID!, followeeId: ID!): User!`
 
 ## Query example
 ```js
-query {
- user(id: "u2") {
+mutation {
+	follow(input: {
+    followerId: "u2"
+    followeeId: "u1"
+  }) {
     id
     name
-    tweets {
-      id
-      text
-      comments {
-        id
-        text
-        author {
-          id
-        }
-      }
+    followers {
+      id,
+      name
     }
   }
 }
@@ -29,36 +24,13 @@ query {
 ```js
 {
   "data": {
-    "user": {
-      "id": "u2",
-      "name": "lee",
-      "tweets": [
+    "follow": {
+      "id": "u1",
+      "name": "moncef",
+      "followers": [
         {
-          "id": "t3",
-          "text": "REST in peace, welcome GraphQL #graphql",
-          "comments": [
-            {
-              "id": "c1",
-              "text": "Where to start learning GraphQL",
-              "author": {
-                "id": "u1"
-              }
-            },
-            {
-              "id": "c2",
-              "text": "Go to howtographql.com",
-              "author": {
-                "id": "u2"
-              }
-            },
-            {
-              "id": "c3",
-              "text": "Thank you",
-              "author": {
-                "id": "u1"
-              }
-            }
-          ]
+          "id": "u2",
+          "name": "lee"
         }
       ]
     }
