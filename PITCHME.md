@@ -78,11 +78,9 @@ Hands on GraphQL
 ---
 @snap[north span-100]
 ### A blogging app with a GraphQL API
-
-##### One endpoint /graphql
 ![IMAGE](./assets/blog-app-gql-api.jpg)
 @snapend
 
----?image=assets/blog-app-gql.jpg&size=auto 75%
----?image=assets/blog-app-gql-1.jpg&size=auto 75%
----?image=assets/blog-app-gql-2.jpg&size=auto 75%
+---?image=assets/blog-app-gql.jpg&size=auto 80%
+---?image=assets/blog-app-gql-1.jpg&size=auto 80%
+---?image=assets/blog-app-gql-2.jpg&size=auto 80%
