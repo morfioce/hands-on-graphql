@@ -98,6 +98,39 @@ Hands on GraphQL
 - Insightful analytics on the backend
 - Benefits of schema and a type system
 @ulend
+
+---
+
+@snap[north span-100]
+### GraphQL execution
+@snapend
+
+@snap[west span-50]
+```js
+type Query {
+  user(id: ID!): User
+}
+
+type User {
+  id: ID!
+  name: String!
+  email: String!
+}
+```
+@snapend
+
+@snap[east span-50]
+```js
+query {
+  user(id: "abc") {
+    id
+    name
+    email
+  }
+}
+```
+@snapend
+
 ---
 
 @snap[north span-100]
@@ -134,3 +167,38 @@ query {
 ```
 @snapend
 
+---
+
+@snap[north span-100]
+### GraphQL execution
+@snapend
+
+@snap[west span-50]
+```js
+type Query {
+  user: [User]
+}
+
+type User {
+  tweets: [Tweet]
+}
+
+type Tweet {
+  id: ID!
+  content: String
+}
+```
+@snapend
+
+@snap[east span-50]
+```js
+query {
+  user {
+    tweets {
+      id
+      content
+    }
+  }
+}
+```
+@snapend
