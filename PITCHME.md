@@ -202,3 +202,39 @@ query {
 }
 ```
 @snapend
+
+---
+
+@snap[north span-100]
+### Possible GraphQL API architectures
+@snapend
+
+@ul
+- GraphQL server with a connected database.
+- GraphQL server to integrate existing services.
+- GraphQL server with a connected database and integrated services.
+@ulend
+
+---
+
+@snap[north span-100]
+### GraphQL server with a connected database
+@snapend
+
+@ul
+- Often, used for new projects.
+- A single web server that implements GraphQL.
+- Server resolves requests and build reponse with data that it fetches from the database.
+@ulend
+
+---
+
+@snap[north span-100]
+### GraphQL server to integrate existing services
+@snapend
+
+@ul
+- Often, used for companies with legacy services and APIs.
+- The GraphQL server hides the complexity of data fetching logic.
+- The GraphQL server doesn't care about the data sources.
+@ulend
