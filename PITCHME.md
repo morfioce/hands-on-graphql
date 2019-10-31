@@ -104,7 +104,7 @@ Hands on GraphQL
 ### GraphQL execution
 @snapend
 
-@snap[west span-100]
+@snap[west span-50]
 ```js
 type Query {
   user(id: ID!): User
@@ -121,7 +121,7 @@ type Tweet {
 ```
 @snapend
 
-@snap[east span-100]
+@snap[east span-50]
 ```js
 query {
   user(id: "abc") {
