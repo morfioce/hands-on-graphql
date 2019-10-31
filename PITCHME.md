@@ -99,3 +99,38 @@ Hands on GraphQL
 - Benefits of schema and a type system
 @ulend
 ---
+
+@snap[north span-100]
+### GraphQL execution
+@snapend
+
+@snap[west span-100]
+```js
+type Query {
+  user(id: ID!): User
+}
+
+type User {
+  tweets: [Tweet]
+}
+
+type Tweet {
+  id: ID!
+  content: String
+}
+```
+@snapend
+
+@snap[east span-100]
+```js
+query {
+  user(id: "abc") {
+    tweets {
+      id
+      content
+    }
+  }
+}
+```
+@snapend
+
