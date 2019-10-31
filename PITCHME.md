@@ -218,7 +218,7 @@ query {
 ---?image=assets/gql-database.jpg&size=auto 100%
 
 @snap[north span-100]
-### GraphQL server with a connected database
+#### GraphQL server with a connected database
 @snapend
 
 ---
@@ -232,8 +232,13 @@ query {
 - Server resolves requests and build reponse with data that it fetches from the database.
 @ulend
 
----
+---?image=assets/gql-thin.jpg&size=auto 100%
 
+@snap[north span-100]
+#### GraphQL server to integrate existing services
+@snapend
+
+---
 @snap[north span-100]
 ### GraphQL server to integrate existing services
 @snapend
@@ -243,3 +248,24 @@ query {
 - The GraphQL server hides the complexity of data fetching logic.
 - The GraphQL server doesn't care about the data sources.
 @ulend
+
+---?image=assets/gql-hybrid.jpg&size=auto 100%
+
+@snap[north span-100]
+#### GraphQL server with connected database & integrated services
+@snapend
+
+---
+
+## To learn more
+
+@ul[](false)
+- Official website https://graphql.org/
+- Community curated tutorials https://www.howtographql.com/
+- Graphql newsletter https://www.graphqlweekly.com/
+- Graphql movie https://www.youtube.com/watch?v=783ccP__No8&t=1s
+@ulend
+
+---
+
+## Thank you
