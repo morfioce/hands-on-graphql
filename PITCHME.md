@@ -217,6 +217,10 @@ query {
 
 ---?image=assets/gql-database.jpg&size=auto 100%
 
+@snap[north span-100]
+### GraphQL server with a connected database
+@snapend
+
 ---
 @snap[north span-100]
 ### GraphQL server with a connected database
