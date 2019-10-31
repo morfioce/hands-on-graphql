@@ -3,7 +3,9 @@
 ### The goal of the workshop is to learn the basics of GraphQL by building an tweeter like API.
 
 ### The API define the following data graph:
-
+![](assets/query.jpg)
+![](assets/mutation.jpg)
+![](assets/subscription.jpg)
 
 ### Build using:
 - NodeJS
