@@ -1,4 +1,4 @@
-Hands on GraphQL
+# Hands on GraphQL
 ### By @morfioce
 ### Backend developer
 
