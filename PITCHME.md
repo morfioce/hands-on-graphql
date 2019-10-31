@@ -84,3 +84,16 @@ Hands on GraphQL
 ---?image=assets/blog-app-gql.jpg&size=auto 95%
 ---?image=assets/blog-app-gql-1.jpg&size=auto 95%
 ---?image=assets/blog-app-gql-2.jpg&size=auto 95%
+
+@snap[north span-100]
+### GraphQL is a better RESt
+@snapend
+
+@ul
+- No more overfetching
+- No more underfetching
+- Rapid product ieteratons on the frontend
+- Insightful analytics on the backend
+- Benefits of schema and a type system
+@ulend
+---
