@@ -215,8 +215,9 @@ query {
 - GraphQL server with a connected database and integrated services.
 @ulend
 
----
+---?image=assets/gql-database.jpg&size=auto 100%
 
+---
 @snap[north span-100]
 ### GraphQL server with a connected database
 @snapend
