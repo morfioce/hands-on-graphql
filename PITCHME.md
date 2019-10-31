@@ -85,6 +85,8 @@ Hands on GraphQL
 ---?image=assets/blog-app-gql-1.jpg&size=auto 95%
 ---?image=assets/blog-app-gql-2.jpg&size=auto 95%
 
+---
+
 @snap[north span-100]
 ### GraphQL is a better RESt
 @snapend
